@@ -1,0 +1,27 @@
+[project]
+name = "lying-oracle"
+description = "Adaptive Lying Oracle RL Environment - Agent must detect when oracle starts lying and adapt strategy"
+tags = ["rl", "adaptive", "multi-turn", "verifiers"]
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "datasets>=4.4.1",
+    "verifiers>=0.1.8.post2",
+    "numpy>=1.24.0",
+    "matplotlib>=3.7.0",
+    "jupyter>=1.0.0",
+    "ipykernel>=6.25.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+include = ["lying_oracle.py", "agent.py", "pyproject.toml"] 
+
+[tool.verifiers.eval]
+num_examples = 10
+max_turns = 500
+lying_threshold = 200
+
